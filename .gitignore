@@ -36,4 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-logs
+### Exclude Log Files ###
+/logs
+user-service-b/logs
+
+### Not exclude Liquibase files ###
+!**/src/main//resources/db/changelog/logs

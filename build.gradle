@@ -18,7 +18,7 @@ ext {
     set('testcontainersVersion', "1.15.1")
     set('modelMapperVersion', "2.3.8")
     set('postgresVersion', "42.2.18")
-//    set('liquibaseVersion', "4.2.2")
+    set('liquibaseVersion', "4.2.2")
 }
 
 dependencies {
@@ -33,7 +33,7 @@ dependencies {
     implementation 'org.ehcache:ehcache'
     implementation "org.modelmapper:modelmapper:${modelMapperVersion}"
     implementation "org.postgresql:postgresql:${postgresVersion}"
-//    implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
+    implementation "org.liquibase:liquibase-core:${liquibaseVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation "org.testcontainers:postgresql:${testcontainersVersion}"
