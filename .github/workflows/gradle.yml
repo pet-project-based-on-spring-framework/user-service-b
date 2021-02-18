@@ -17,7 +17,7 @@ on:
 
 jobs:
   build_user_service_b:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkhout the repository
       uses: actions/checkout@v2
@@ -26,10 +26,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.11
-          
+    
+    - name: Check version of docker
+      run: docker -v
+    
+    - name: Show status of service docker
+      run: sudo systemctl status docker
+    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew clean build
 
