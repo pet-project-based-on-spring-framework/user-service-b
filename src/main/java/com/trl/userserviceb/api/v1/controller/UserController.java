@@ -24,13 +24,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.trl.userserviceb.util.WebUtil.getFullRequestUri;
-
 import javax.validation.constraints.Min;
 import java.util.List;
 
-import static org.springframework.data.domain.Sort.Direction.DESC;
+import static com.trl.userserviceb.util.WebUtil.getFullRequestUri;
 
+import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @RestController
 @RequestMapping(
@@ -39,9 +38,9 @@ import static org.springframework.data.domain.Sort.Direction.DESC;
 @Validated
 public class UserController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-
     public static final String BASE_URL = ApiVersion.VERSION_1_0 + "/users";
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     private final UserService service;
 
@@ -52,16 +51,14 @@ public class UserController {
         this.converter = converter;
     }
 
-    @Operation(
-            summary = "Return user.",
-            description = "Return user with provided user identifier.",
-            responses = {
-                    @ApiResponse(responseCode = "200", description = "Everything fine."),
-                    @ApiResponse(responseCode = "400", description = "User identifier is incorrect."),
-                    @ApiResponse(responseCode = "404", description = "User by this identifier not found."),
-                    @ApiResponse(description = "User", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = UserDto.class)))},
-            parameters = {@Parameter(description = "Id of the user to be retrieved. Cannot be null or zero.", required = true)}
-    )
+    @Operation(summary = "Return user.", description = "Return user with provided user identifier.")
+    @Parameter(description = "Id of the user to be retrieved. Cannot be null or zero.", required = true)
+    @ApiResponse(responseCode = "200", description = "Everything fine.")
+    @ApiResponse(responseCode = "400", description = "User identifier is incorrect.")
+    @ApiResponse(responseCode = "404", description = "User by this identifier not found.")
+    @ApiResponse(description = "User",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = UserDto.class)))
     @GetMapping(path = "/{userId:\\d+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDto> getUserById(
             @PathVariable(name = "userId")
@@ -73,23 +70,28 @@ public class UserController {
         return ResponseEntity.ok(converter.convert(serviceResult));
     }
 
-    @Operation(
-            summary = "Page with Users will be returned.",
-            description = "Page with Users will be returned.",
-            responses = {
-                    @ApiResponse(responseCode = "200", description = "Everything fine."),
-                    @ApiResponse(responseCode = "404", description = "User by this identifier not found."),
-                    @ApiResponse(description = "Page with users.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Pageable.class)))}
-    )
+    @Operation(summary = "Page with Users will be returned.", description = "Page with Users will be returned.")
+    @ApiResponse(responseCode = "200", description = "Everything fine.")
+    @ApiResponse(responseCode = "404", description = "User by this identifier not found.")
+    @ApiResponse(description = "Page with users.",
+            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = Pageable.class)))
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<UserDto>> getAllUsers(@PageableDefault(sort = "createdDate", direction = DESC) Pageable pageable) {
+    public ResponseEntity<Page<UserDto>> getAllUsers(
+            @PageableDefault(sort = "createdDate", direction = DESC) Pageable pageable) {
         LOG.debug("Received GET request to retrieve user, request URI:[{}]", getFullRequestUri());
 
         Page<User> serviceResult = service.getAll(pageable);
 
         List<UserDto> contentResult = converter.convert(serviceResult.getContent());
 
-        return ResponseEntity.ok(new PageImpl<>(contentResult, serviceResult.getPageable(), serviceResult.getTotalElements()));
+        PageImpl<UserDto> pageResult =
+                new PageImpl<>(
+                        contentResult,
+                        serviceResult.getPageable(),
+                        serviceResult.getTotalElements());
+
+        return ResponseEntity.ok(pageResult);
     }
 
 }

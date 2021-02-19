@@ -1,0 +1,25 @@
+<FindBugsFilter>
+
+    <Match>
+        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+        <Or>
+            <And>
+                <Class name="com.trl.userserviceb.core.service.caching.CachingTestHelper"/>
+                <Method name="putInCache"/>
+            </And>
+            <And>
+                <Class name="com.trl.userserviceb.core.service.caching.CachingTestHelper"/>
+                <Method name="assertRecordInCache"/>
+            </And>
+            <And>
+                <Class name="com.trl.userserviceb.core.service.caching.CachingTestHelper"/>
+                <Method name="assertNoRecordInCache"/>
+            </And>
+            <And>
+                <Class name="com.trl.userserviceb.core.service.caching.CachingTestHelper"/>
+                <Method name="clearCaches"/>
+            </And>
+        </Or>
+    </Match>
+
+</FindBugsFilter>

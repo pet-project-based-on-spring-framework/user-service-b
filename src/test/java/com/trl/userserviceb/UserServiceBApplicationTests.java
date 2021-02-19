@@ -7,11 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = ResourceTestConfig.class)
 @DisplayName("UserServiceBApplication")
-class UserServiceBApplicationTests extends AbstractIntegrationTest{
+class UserServiceBApplicationTests extends AbstractIntegrationTest {
 
     @Test
     void shouldStartBackendApplicationWhenMainMethodIsInvoked() {
-//        UserServiceBApplication.main(new String[]{});
     }
 
 }

@@ -64,7 +64,7 @@ class UserServiceImplCachingBddTest extends AbstractIntegrationTest {
 
         cachingHelper.assertNoRecordInCache(USER_CACHE, KEY_BY_ID + userId);
 
-        User result = service.getById(userId);
+        service.getById(userId);
 
         then(repository).should().findById(eq(userId));
         then(repository).shouldHaveNoMoreInteractions();
@@ -86,7 +86,7 @@ class UserServiceImplCachingBddTest extends AbstractIntegrationTest {
 
         cachingHelper.putInCache(USER_CACHE, KEY_BY_ID + userId, expected);
 
-        User result = service.getById(userId);
+        service.getById(userId);
 
         then(repository).shouldHaveNoMoreInteractions();
     }

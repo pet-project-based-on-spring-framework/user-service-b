@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 /**
  * This class is designed to represent Entity object of user.
@@ -102,9 +103,16 @@ public class User extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         User that = (User) o;
+
         return Objects.equals(id, that.id);
     }
 
@@ -115,14 +123,17 @@ public class User extends BaseEntity {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", birthday=" + birthday +
-                '}';
+        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+                .add("createdDate=" + createdDate)
+                .add("updatedDate=" + updatedDate)
+                .add("id=" + id)
+                .add("firstName='" + firstName + "'")
+                .add("lastName='" + lastName + "'")
+                .add("username='" + username + "'")
+                .add("email='" + email + "'")
+                .add("password='" + password + "'")
+                .add("birthday=" + birthday)
+                .toString();
     }
 
     public static final class Builder {

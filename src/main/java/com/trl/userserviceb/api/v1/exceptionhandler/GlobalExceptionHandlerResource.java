@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static com.trl.userserviceb.util.WebUtil.getFullRequestUri;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.Collection;
 import java.util.stream.Collectors;
+
+import static com.trl.userserviceb.util.WebUtil.getFullRequestUri;
 
 @RestControllerAdvice
 public class GlobalExceptionHandlerResource extends ResponseEntityExceptionHandler {

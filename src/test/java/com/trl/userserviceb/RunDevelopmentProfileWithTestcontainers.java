@@ -40,10 +40,10 @@ public class RunDevelopmentProfileWithTestcontainers {
             String username = postgres.getUsername();
             String password = postgres.getPassword();
 
-            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database url: [{}]", databaseUrl);
-            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database name: [{}]", databaseName);
-            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database username: [{}]", username);
-            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database password: [{}]", password);
+            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database url: [{}]", databaseUrl);
+            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database name: [{}]", databaseName);
+            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database username: [{}]", username);
+            LOG.info(">>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>>   >>> Database password: [{}]", password);
 
             return Map.of(
                     "spring.datasource.url", databaseUrl,

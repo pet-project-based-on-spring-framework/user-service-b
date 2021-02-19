@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
@@ -16,7 +17,8 @@ import java.util.StringJoiner;
 @Schema(name = "User", description = "Dto that represent a user.")
 public class UserDto {
 
-    @Schema(example = "100", minimum = "0", exclusiveMinimum = true, description = "ID of user.", nullable = true, implementation = Long.class)
+    @Schema(example = "100", minimum = "0", exclusiveMinimum = true,
+            description = "ID of user.", nullable = true, implementation = Long.class)
     @Positive
     private Long id;
 
@@ -36,17 +38,22 @@ public class UserDto {
     @NotBlank
     private String email;
 
-    @Schema(required = true, example = "secret_password", description = "Password of account.", implementation = String.class)
+    @Schema(required = true, example = "secret_password",
+            description = "Password of account.", implementation = String.class)
     @NotBlank
     private String password;
 
     @Schema(example = "2000-01-01", description = "Birthday of user.", implementation = LocalDate.class)
     private LocalDate birthday;
 
-    @Schema(example = "2000-01-01", description = "Creation date of the user. Creation date will be generated automatically.", implementation = LocalDateTime.class)
+    @Schema(example = "2000-01-01",
+            description = "Creation date of the user. Creation date will be generated automatically.",
+            implementation = LocalDateTime.class)
     private LocalDateTime createdDate;
 
-    @Schema(example = "2000-01-01", description = "Update date of the user. Update date will be generated automatically.", implementation = LocalDateTime.class)
+    @Schema(example = "2000-01-01",
+            description = "Update date of the user. Update date will be generated automatically.",
+            implementation = LocalDateTime.class)
     private LocalDateTime updatedDate;
 
     public UserDto() {
@@ -122,6 +129,35 @@ public class UserDto {
 
     public void setUpdatedDate(LocalDateTime updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (!(o instanceof UserDto)) {
+            return false;
+        }
+
+        UserDto userDto = (UserDto) o;
+
+        return Objects.equals(id, userDto.id)
+                && Objects.equals(firstName, userDto.firstName)
+                && Objects.equals(lastName, userDto.lastName)
+                && Objects.equals(username, userDto.username)
+                && Objects.equals(email, userDto.email)
+                && Objects.equals(password, userDto.password)
+                && Objects.equals(birthday, userDto.birthday)
+                && Objects.equals(createdDate, userDto.createdDate)
+                && Objects.equals(updatedDate, userDto.updatedDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, username,
+                email, password, birthday, createdDate, updatedDate);
     }
 
     @Override

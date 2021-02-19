@@ -103,11 +103,16 @@ class UserControllerTest {
 
     @ParameterizedTest
     @ArgumentsSource(UserArgumentsProvider.class)
-    void shouldReturnPageOfUserDto_defaultSizeOfPageIsTen(List<User> testDataUserList, List<UserDto> testDataUserDtoList) throws Exception {
+    void shouldReturnPageOfUserDto_defaultSizeOfPageIsTen(List<User> testDataUserList,
+                                                          List<UserDto> testDataUserDtoList) throws Exception {
 
         int defaultPageSize = 10;
-        List<UserDto> userDtoList = testDataUserDtoList.stream().limit(defaultPageSize).collect(Collectors.toList());
-        List<User> userList = testDataUserList.stream().limit(defaultPageSize).collect(Collectors.toList());
+        List<UserDto> userDtoList = testDataUserDtoList.stream()
+                .limit(defaultPageSize)
+                .collect(Collectors.toList());
+        List<User> userList = testDataUserList.stream()
+                .limit(defaultPageSize)
+                .collect(Collectors.toList());
 
         Page<User> servicePageResponse = new PageImpl<>(userList);
 
