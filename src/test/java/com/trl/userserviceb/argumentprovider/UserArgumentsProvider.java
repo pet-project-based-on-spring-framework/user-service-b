@@ -1,12 +1,13 @@
 package com.trl.userserviceb.argumentprovider;
 
-import com.trl.userserviceb.core.dto.UserDto;
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.model.UserDto;
+import com.trl.userserviceb.core.domain.User;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -27,198 +28,60 @@ public class UserArgumentsProvider implements ArgumentsProvider {
     }
 
     private void initData() {
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(1L)
-                        .withFirstName("testUserFirstName1")
-                        .withLastName("testUserLastName1")
-                        .withUsername("testUserUsername1")
-                        .withEmail("testUserEmail1@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 1))
-                        .build()
-        );
+        testDataUserList.add(createUser(1L, 1, 2, 29));
+        testDataUserList.add(createUser(2L, 3, 4, 28));
+        testDataUserList.add(createUser(3L, 5, 6, 27));
+        testDataUserList.add(createUser(4L, 7, 8, 26));
+        testDataUserList.add(createUser(5L, 9, 10, 25));
+        testDataUserList.add(createUser(6L, 11, 12, 24));
+        testDataUserList.add(createUser(7L, 13, 14, 23));
+        testDataUserList.add(createUser(8L, 15, 16, 22));
+        testDataUserList.add(createUser(9L, 17, 18, 21));
+        testDataUserList.add(createUser(10L, 19, 20, 20));
+        testDataUserList.add(createUser(11L, 21, 22, 19));
+        testDataUserList.add(createUser(12L, 23, 24, 18));
 
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(2L)
-                        .withFirstName("testUserFirstName2")
-                        .withLastName("testUserLastName2")
-                        .withUsername("testUserUsername2")
-                        .withEmail("testUserEmail2@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 2))
-                        .build()
-        );
+        testDataUserDtoList.add(createUserDto(1L, 1, 2, 29));
+        testDataUserDtoList.add(createUserDto(2L, 3, 4, 28));
+        testDataUserDtoList.add(createUserDto(3L, 5, 6, 27));
+        testDataUserDtoList.add(createUserDto(4L, 7, 8, 26));
+        testDataUserDtoList.add(createUserDto(5L, 9, 10, 25));
+        testDataUserDtoList.add(createUserDto(6L, 11, 12, 24));
+        testDataUserDtoList.add(createUserDto(7L, 13, 14, 23));
+        testDataUserDtoList.add(createUserDto(8L, 15, 16, 22));
+        testDataUserDtoList.add(createUserDto(9L, 17, 18, 21));
+        testDataUserDtoList.add(createUserDto(10L, 19, 20, 20));
+        testDataUserDtoList.add(createUserDto(11L, 21, 22, 19));
+        testDataUserDtoList.add(createUserDto(12L, 23, 24, 18));
 
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(3L)
-                        .withFirstName("testUserFirstName3")
-                        .withLastName("testUserLastName3")
-                        .withUsername("testUserUsername3")
-                        .withEmail("testUserEmail3@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 3))
-                        .build()
-        );
+    }
 
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(4L)
-                        .withFirstName("testUserFirstName4")
-                        .withLastName("testUserLastName4")
-                        .withUsername("testUserUsername4")
-                        .withEmail("testUserEmail4@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 4))
-                        .build()
-        );
+    private User createUser(Long id, int createdDay, int updatedDay, int dayOfBirthday) {
+        return new User.Builder()
+                .withCreatedDate(LocalDateTime.of(2021, 1, createdDay, 8, 30))
+                .withUpdatedDate(LocalDateTime.of(2021, 1, updatedDay, 8, 30))
+                .withId(id)
+                .withFirstName("testUserFirstName" + id)
+                .withLastName("testUserLastName" + id)
+                .withUsername("testUserUsername" + id)
+                .withEmail("testUserEmail" + id + "@email.com")
+                .withPassword("strong_password" + id)
+                .withBirthday(LocalDate.of(2000, 1, dayOfBirthday))
+                .build();
+    }
 
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(5L)
-                        .withFirstName("testUserFirstName5")
-                        .withLastName("testUserLastName5")
-                        .withUsername("testUserUsername5")
-                        .withEmail("testUserEmail5@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 5))
-                        .build()
-        );
-
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(6L)
-                        .withFirstName("testUserFirstName6")
-                        .withLastName("testUserLastName6")
-                        .withUsername("testUserUsername6")
-                        .withEmail("testUserEmail6@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 6))
-                        .build()
-        );
-
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(7L)
-                        .withFirstName("testUserFirstName7")
-                        .withLastName("testUserLastName7")
-                        .withUsername("testUserUsername7")
-                        .withEmail("testUserEmail7@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 7))
-                        .build()
-        );
-
-        testDataUserList.add(
-                new User.Builder()
-                        .withId(8L)
-                        .withFirstName("testUserFirstName8")
-                        .withLastName("testUserLastName8")
-                        .withUsername("testUserUsername8")
-                        .withEmail("testUserEmail8@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 8))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(1L)
-                        .withFirstName("testUserFirstName1")
-                        .withLastName("testUserLastName1")
-                        .withUsername("testUserUsername1")
-                        .withEmail("testUserEmail1@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 1))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(2L)
-                        .withFirstName("testUserFirstName2")
-                        .withLastName("testUserLastName2")
-                        .withUsername("testUserUsername2")
-                        .withEmail("testUserEmail2@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 2))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(3L)
-                        .withFirstName("testUserFirstName3")
-                        .withLastName("testUserLastName3")
-                        .withUsername("testUserUsername3")
-                        .withEmail("testUserEmail3@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 3))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(4L)
-                        .withFirstName("testUserFirstName4")
-                        .withLastName("testUserLastName4")
-                        .withUsername("testUserUsername4")
-                        .withEmail("testUserEmail4@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 4))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(5L)
-                        .withFirstName("testUserFirstName5")
-                        .withLastName("testUserLastName5")
-                        .withUsername("testUserUsername5")
-                        .withEmail("testUserEmail5@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 5))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(6L)
-                        .withFirstName("testUserFirstName6")
-                        .withLastName("testUserLastName6")
-                        .withUsername("testUserUsername6")
-                        .withEmail("testUserEmail6@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 6))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(7L)
-                        .withFirstName("testUserFirstName7")
-                        .withLastName("testUserLastName7")
-                        .withUsername("testUserUsername7")
-                        .withEmail("testUserEmail7@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 7))
-                        .build()
-        );
-
-        testDataUserDtoList.add(
-                new UserDto.Builder()
-                        .withId(8L)
-                        .withFirstName("testUserFirstName8")
-                        .withLastName("testUserLastName8")
-                        .withUsername("testUserUsername8")
-                        .withEmail("testUserEmail8@email.com")
-                        .withPassword("strong_password")
-                        .withBirthday(LocalDate.of(2000, 1, 8))
-                        .build()
-        );
-
+    private UserDto createUserDto(Long id, int createdDay, int updatedDay, int dayOfBirthday) {
+        return new UserDto.Builder()
+                .withCreatedDate(LocalDateTime.of(2021, 1, createdDay, 8, 30))
+                .withUpdatedDate(LocalDateTime.of(2021, 1, updatedDay, 8, 30))
+                .withId(id)
+                .withFirstName("testUserFirstName" + id)
+                .withLastName("testUserLastName" + id)
+                .withUsername("testUserUsername" + id)
+                .withEmail("testUserEmail" + id + "@email.com")
+                .withPassword("strong_password" + id)
+                .withBirthday(LocalDate.of(2000, 1, dayOfBirthday))
+                .build();
     }
 
 }
