@@ -17,3 +17,7 @@ Content-Type: application/json
 ### Get Page with users.
 GET http://{{host}}:{{backend_port}}/{{version_api}}/users
 Content-Type: application/json
+
+### Get Page with users. Page size is 8.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users?size=8
+Content-Type: application/json
