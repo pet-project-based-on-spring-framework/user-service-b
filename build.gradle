@@ -6,6 +6,7 @@ plugins {
     id 'java'
     id 'checkstyle'
     id "com.github.spotbugs" version "4.6.0"
+    id 'idea'
 }
 
 group = 'com.trl'
@@ -32,6 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
     implementation 'javax.cache:cache-api'
     implementation 'org.ehcache:ehcache'
@@ -101,3 +103,10 @@ spotbugsTest {
 }
 
 test.mustRunAfter checkstyleMain, checkstyleTest, spotbugsMain, spotbugsTest
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
