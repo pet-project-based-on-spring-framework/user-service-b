@@ -1,4 +1,4 @@
-package com.trl.userserviceb.core.dto;
+package com.trl.userserviceb.core.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.trl.userserviceb.core.service.caching;
 
 import com.trl.userserviceb.AbstractIntegrationTest;
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.domain.User;
 import com.trl.userserviceb.core.repository.UserRepository;
 import com.trl.userserviceb.core.service.UserService;
 import org.junit.jupiter.api.AfterEach;

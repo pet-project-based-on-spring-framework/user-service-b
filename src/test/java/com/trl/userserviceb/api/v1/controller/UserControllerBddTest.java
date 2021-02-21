@@ -2,8 +2,8 @@ package com.trl.userserviceb.api.v1.controller;
 
 import com.trl.userserviceb.argumentprovider.UserArgumentsProvider;
 import com.trl.userserviceb.core.converter.impl.UserToUserDtoConverter;
-import com.trl.userserviceb.core.dto.UserDto;
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.model.UserDto;
+import com.trl.userserviceb.core.domain.User;
 import com.trl.userserviceb.core.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package com.trl.userserviceb.core.converter.impl;
 
 import com.trl.userserviceb.core.converter.TypeConverter;
-import com.trl.userserviceb.core.dto.UserDto;
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.model.UserDto;
+import com.trl.userserviceb.core.domain.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

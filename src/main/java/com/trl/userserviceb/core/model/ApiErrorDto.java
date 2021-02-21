@@ -1,4 +1,4 @@
-package com.trl.userserviceb.core.dto;
+package com.trl.userserviceb.core.model;
 
 import java.time.LocalDateTime;
 import java.util.StringJoiner;

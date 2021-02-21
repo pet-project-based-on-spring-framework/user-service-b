@@ -1,6 +1,6 @@
 package com.trl.userserviceb.core.service;
 
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

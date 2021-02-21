@@ -6,7 +6,7 @@
     <!-- User caches -->
     <cache alias="userCache">
         <key-type>java.lang.String</key-type>
-        <value-type>com.trl.userserviceb.core.entity.User</value-type>
+        <value-type>com.trl.userserviceb.core.domain.User</value-type>
         <expiry>
             <ttl unit="minutes">30</ttl>
         </expiry>

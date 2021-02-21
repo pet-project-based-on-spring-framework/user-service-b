@@ -1,6 +1,6 @@
 package com.trl.userserviceb.api.v1.exceptionhandler;
 
-import com.trl.userserviceb.core.dto.ApiErrorDto;
+import com.trl.userserviceb.core.model.ApiErrorDto;
 import com.trl.userserviceb.core.service.DateTimeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

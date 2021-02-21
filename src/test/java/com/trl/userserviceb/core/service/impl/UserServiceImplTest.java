@@ -1,8 +1,8 @@
 package com.trl.userserviceb.core.service.impl;
 
 import com.trl.userserviceb.argumentprovider.UserArgumentsProvider;
-import com.trl.userserviceb.core.dto.UserDto;
-import com.trl.userserviceb.core.entity.User;
+import com.trl.userserviceb.core.model.UserDto;
+import com.trl.userserviceb.core.domain.User;
 import com.trl.userserviceb.core.repository.UserRepository;
 import com.trl.userserviceb.core.service.exception.UserNotFoundException;
 import org.junit.jupiter.api.DisplayName;
