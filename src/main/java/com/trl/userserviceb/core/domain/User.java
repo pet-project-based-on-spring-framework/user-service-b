@@ -1,4 +1,4 @@
-package com.trl.userserviceb.core.entity;
+package com.trl.userserviceb.core.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -138,6 +139,10 @@ public class User extends BaseEntity {
 
     public static final class Builder {
 
+        private LocalDateTime createdDate;
+
+        private LocalDateTime updatedDate;
+
         private Long id;
 
         private String firstName;
@@ -153,6 +158,16 @@ public class User extends BaseEntity {
         private LocalDate birthday;
 
         public Builder() {
+        }
+
+        public Builder withCreatedDate(LocalDateTime createdDate) {
+            this.createdDate = createdDate;
+            return this;
+        }
+
+        public Builder withUpdatedDate(LocalDateTime updatedDate) {
+            this.updatedDate = updatedDate;
+            return this;
         }
 
         public Builder withId(Long id) {
@@ -193,6 +208,8 @@ public class User extends BaseEntity {
         public User build() {
             User result = new User();
 
+            result.setCreatedDate(this.createdDate);
+            result.setUpdatedDate(this.updatedDate);
             result.setId(this.id);
             result.setFirstName(this.firstName);
             result.setLastName(this.lastName);
